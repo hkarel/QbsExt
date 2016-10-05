@@ -10,4 +10,9 @@ LibModule {
     id: facesdk
     prefix: "/opt/facesdk"
     version: "1.10.x"
+    Properties {
+        condition: qbs.targetOS.contains("windows")
+                   && qbs.toolchain && qbs.toolchain.contains("mingw")
+        prefix: "c:/opt/facesdk"
+    }
 }
