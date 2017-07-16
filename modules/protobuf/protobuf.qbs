@@ -20,8 +20,8 @@ Module {
 
     validate: {
         if (!File.exists("/usr/bin/protoc"))
-            throw "Protobuf compiler not found. Possibly need to install \
-                   packet 'protobuf-compiler'";
+            throw new Error("Protobuf compiler not found. Possibly need \
+                             to install packet 'protobuf-compiler'");
     }
 
     FileTagger {
