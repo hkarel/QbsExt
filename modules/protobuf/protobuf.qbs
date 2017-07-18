@@ -33,7 +33,8 @@ Module {
         inputs: ["protobuf"]
         outputFileTags: ["cpp", "hpp"]
         outputArtifacts: {
-            var generatedFilesDir = ModUtils.moduleProperty(product, "generatedFilesDir");
+            //var generatedFilesDir = ModUtils.moduleProperty(product, "generatedFilesDir");
+            var generatedFilesDir = product.protobuf.generatedFilesDir;
             return [{
                 filePath: generatedFilesDir + "/" + input.baseName + ".pb.h",
                 fileTags: ["hpp"],
@@ -43,7 +44,8 @@ Module {
             }];
         }
         prepare: {
-            var generatedFilesDir = ModUtils.moduleProperty(product, "generatedFilesDir");
+            //var generatedFilesDir = ModUtils.moduleProperty(product, "generatedFilesDir");
+            var generatedFilesDir = product.protobuf.generatedFilesDir;
             var cmd = new Command("/usr/bin/protoc", ["--cpp_out", generatedFilesDir, input.fileName]);
             cmd.workingDirectory = FileInfo.path(input.filePath);
             cmd.description = "protobuf code generation";
