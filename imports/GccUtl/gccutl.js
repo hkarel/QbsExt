@@ -1,5 +1,5 @@
-var File = loadExtension("qbs.File");
-var Process = loadExtension("qbs.Process");
+var File = require("qbs.File");
+var Process = require("qbs.Process");
 
 function ar(toolchainPathPrefix)
 {

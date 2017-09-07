@@ -1,6 +1,6 @@
-var File = loadExtension("qbs.File");
-var TextFile = loadExtension("qbs.TextFile");
-var Process = loadExtension("qbs.Process");
+var File = require("qbs.File");
+var TextFile = require("qbs.TextFile");
+var Process = require("qbs.Process");
 
 // Создает полный путь до статических библиотек.
 function buildFullNamesLibraries(product, path, libraries)
