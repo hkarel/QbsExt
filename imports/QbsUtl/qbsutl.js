@@ -2,15 +2,18 @@ var File = require("qbs.File");
 var TextFile = require("qbs.TextFile");
 var Process = require("qbs.Process");
 
-// Создает полный путь до статических библиотек.
-function buildFullNamesLibraries(product, path, libraries)
+// Расширяет наименование статических библиотек полным путем до них
+function staticLibrariesPaths(product, path, libraries)
 {
+    if (path === undefined)
+        return [];
+
     var libs = [];
     var staticLibraryPrefix = product.cpp.staticLibraryPrefix;
     var staticLibrarySuffix = product.cpp.staticLibrarySuffix;
 
     for (var i in libraries)
-        libs.push(path + "/" + staticLibraryPrefix + libraries[i] + staticLibrarySuffix)
+        libs.push(path + "/" + staticLibraryPrefix + libraries[i] + staticLibrarySuffix);
     return libs;
 }
 
