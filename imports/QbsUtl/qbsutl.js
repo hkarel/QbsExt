@@ -20,7 +20,7 @@ function staticLibrariesPaths(product, path, libraries)
 function concatPaths()
 {
     var paths = [];
-    for(var i = 0; i < arguments.length; ++i) {
+    for (var i = 0; i < arguments.length; ++i) {
         if (arguments[i] !== undefined)
             paths = paths.concat(arguments[i]);
     }
