@@ -1,6 +1,7 @@
 var File = require("qbs.File");
 var TextFile = require("qbs.TextFile");
 var Process = require("qbs.Process");
+var ModUtils = require("qbs.ModUtils");
 
 // Расширяет наименование статических библиотек полным путем до них
 function staticLibrariesPaths(product, path, libraries)
@@ -19,12 +20,18 @@ function staticLibrariesPaths(product, path, libraries)
 
 function concatPaths()
 {
-    var paths = [];
-    for (var i = 0; i < arguments.length; ++i) {
-        if (arguments[i] !== undefined)
-            paths = paths.concat(arguments[i]);
-    }
-    return paths;
+//    var paths = [];
+//    for (var i = 0; i < arguments.length; ++i) {
+//        if (arguments[i] === undefined)
+//            continue;
+//        else if (arguments[i] instanceof Array)
+//            paths = paths.concat(arguments[i]);
+//        else
+//            paths.push(arguments[i]);
+//    }
+//    return paths;
+
+    return ModUtils.concatAll.apply(null, arguments);
 }
 
 // Расширяет тип String функцией форматирования.
