@@ -63,13 +63,14 @@ Module {
                     throw new Error(msg.format(name, libraryPath, version));
 
                 if (checkingHeaders !== undefined)
-                    for (var i = 0; i < checkingHeaders.length; ++i)
+                    for (var i = 0; i < checkingHeaders.length; ++i) {
                         var headerPath = includePath + "/" + checkingHeaders[i];
                         if (!File.exists(headerPath)) {
                             msg = "Module {0}: header file '{1}' not found. "
                                   "Possibly library is not installed.";
                             throw new Error(msg.format(name, headerPath));
                         }
+                    }
             }
         };
     }
