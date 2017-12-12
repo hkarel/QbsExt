@@ -317,14 +317,19 @@ Module {
                     var generatedFilesDir = ModUtils.moduleProperty(product, "generatedFilesDir");
 
                     var file = new TextFile(generatedFilesDir + "/" + namespace + ".nsmap", TextFile.ReadOnly);
-                    var text = file.readAll();
-                    file.close();
+                    try {
+                        var text = file.readAll();
+                    } finally {
+                        file.close();
+                    }
 
                     text = text.replace(/struct\s+Namespace/, "struct " + namespace + "::Namespace");
-
                     var file = new TextFile(generatedFilesDir + "/" + namespace + ".nsmap.h", TextFile.WriteOnly);
-                    file.write(text);
-                    file.close();
+                    try {
+                        file.write(text);
+                    } finally {
+                        file.close();
+                    }
                 };
                 commands.push(cmd);
             }

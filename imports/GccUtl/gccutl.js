@@ -12,7 +12,12 @@ function compilerLibraryPath(cppCompilerPath)
 {
     var libPath = "";
     var process = new Process();
-    if (process.exec(cppCompilerPath, ["--print-file-name=libstdc++.a"], false) === 0)
-        libPath = process.readLine().trim();
-    return libPath.replace("/libstdc++.a", "");
+    try {
+        if (process.exec(cppCompilerPath, ["--print-file-name=libstdc++.a"], false) === 0)
+            libPath = process.readLine().trim();
+        return libPath.replace("/libstdc++.a", "");
+    }
+    finally {
+        process.close();
+    }
 }

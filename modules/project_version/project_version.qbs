@@ -22,15 +22,21 @@ Module {
             throw new Error(("File '{0}' not found").format(filePath));
 
         var file = new TextFile(filePath, TextFile.ReadOnly);
-        var vers = file.readLine().trim();
+        try {
+            var vers = file.readLine().trim();
 
-        var regex = /^\d+\.\d+\.\d+\.\d+$/
-        var r = vers. match(regex);
-        if (r == null) {
-            var msg =  "Incorrect version format. Must be: 'N.N.N.N'. See file {0}";
-            throw new Error(msg.format(filePath));
+            var regex = /^\d+\.\d+\.\d+\.\d+$/
+            var r = vers. match(regex);
+            if (r == null) {
+                var msg =  "Incorrect version format. Must be: 'N.N.N.N'. See file {0}";
+                throw new Error(msg.format(filePath));
+            }
+            return vers;
         }
-        return vers;
+        finally {
+            file.close();
+        }
+
     }
 
     property string buildVersion: {
@@ -47,9 +53,15 @@ Module {
 
     property string buildRevision: {
         var process = new Process();
-        process.setWorkingDirectory(project.sourceDirectory);
-        if (process.exec("git", ["log", "-1", "--pretty=%h"], false) === 0)
-            return process.readLine().trim();
+        try {
+            process.setWorkingDirectory(project.sourceDirectory);
+            if (process.exec("git", ["log", "-1", "--pretty=%h"], false) === 0)
+                return process.readLine().trim();
+        }
+        finally {
+            process.close();
+        }
+
     }
 
     property var cppDefines: {
