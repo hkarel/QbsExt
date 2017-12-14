@@ -16,4 +16,5 @@ LibModule {
         prefix: "c:/opt/opencv"
         libSuffix: "/x86/mingw/lib"
     }
+    checkingHeaders: ["opencv2/opencv.hpp"]
 }

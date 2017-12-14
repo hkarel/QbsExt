@@ -8,6 +8,7 @@ import '../LibModule.qbs' as LibModule
 
 LibModule {
     id: caffe
-    prefix: "/opt/caffe"
     version: "1.0.x"
+    prefix: "/opt/caffe"
+    checkingHeaders: ["caffe/caffe.hpp"]
 }

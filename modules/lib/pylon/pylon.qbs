@@ -11,4 +11,5 @@ LibModule {
     version: "5.0.x"
     prefix: "/opt/pylon"
     libSuffix: "/lib64"
+    checkingHeaders: ["pylon/PylonBase.h"]
 }
