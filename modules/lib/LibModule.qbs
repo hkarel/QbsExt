@@ -48,14 +48,14 @@ Module {
                         }
                     }
                     if (notFound === true) {
-                        var msg = "Module {0}: header file '{1}' not found in system paths. "
+                        var msg = "Module {0}: header file '{1}' not found in system paths. " +
                                   "Possibly library is not installed.";
                         throw new Error(msg.format(name, checkingHeaders[i]));
                     }
                 }
             }
             else {
-                var msg = "Module {0}: directory '{1}' not found. "
+                var msg = "Module {0}: directory '{1}' not found. " +
                           "Possibly incorrect assigned version ({2}).";
                 if (!File.exists(includePath))
                     throw new Error(msg.format(name, includePath, version));
@@ -67,7 +67,7 @@ Module {
                     for (var i = 0; i < checkingHeaders.length; ++i) {
                         var headerPath = includePath + "/" + checkingHeaders[i];
                         if (!File.exists(headerPath)) {
-                            msg = "Module {0}: header file '{1}' not found. "
+                            msg = "Module {0}: header file '{1}' not found. " +
                                   "Possibly library is not installed.";
                             throw new Error(msg.format(name, headerPath));
                         }
