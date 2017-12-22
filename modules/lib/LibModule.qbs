@@ -25,6 +25,7 @@ Module {
 
     property pathList systemIncludePaths: [
         "/usr/include",
+        "/usr/include/x86_64-linux-gnu",
         "/usr/local/include",
     ]
     property stringList checkingHeaders: []
