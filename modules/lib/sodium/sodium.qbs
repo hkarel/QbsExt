@@ -10,5 +10,7 @@ LibModule {
     id: sodium
     version: "1.0.x"
     prefix: "/opt/sodium"
-    checkingHeaders: ["sodium.h"]
+    checkingHeaders:  ["sodium.h"]
+    dynamicLibraries: ["sodium"]
+    staticLibraries:  ["sodium"]
 }
