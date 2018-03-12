@@ -15,7 +15,7 @@ LibModule {
         "libavdevice/avdevice.h",
         "libavfilter/avfilter.h",
         "libavformat/avformat.h",
-        "libavresample/avresample.h",
+        //"libavresample/avresample.h",
         "libavutil/avutil.h",
         "libpostproc/postprocess.h",
         "libswresample/swresample.h",
