@@ -25,15 +25,16 @@ Probe {
                         if (!line)
                             break;
 
+                        var rmatch;
                         if (osName === undefined) {
-                            var r = line.match(regex1);
-                            if (r !== null)
-                                osName = r[1];
+                            rmatch = line.match(regex1);
+                            if (rmatch !== null)
+                                osName = rmatch[1];
                         }
                         if (osVersion === undefined) {
-                            var r = line.match(regex2);
-                            if (r !== null)
-                                osVersion = r[1];
+                            rmatch = line.match(regex2);
+                            if (rmatch !== null)
+                                osVersion = rmatch[1];
                         }
                     }
                 }
