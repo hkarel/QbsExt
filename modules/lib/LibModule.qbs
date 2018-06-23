@@ -17,8 +17,13 @@ Module {
     property string includeSuffix: "/include"
     property string libSuffix: "/lib"
 
-    property path includePath: (useSystem || !enabled) ? undefined : prefix + "/" + version + includeSuffix
-    property path libraryPath: (useSystem || !enabled) ? undefined : prefix + "/" + version + libSuffix
+    property path includePath: (useSystem || !enabled)
+                               ? undefined
+                               : prefix + (version.length ? "/" + version : "") + includeSuffix
+
+    property path libraryPath: (useSystem || !enabled)
+                               ? undefined
+                               : prefix + (version.length ? "/" + version : "") + libSuffix
 
     property var dynamicLibraries: []
     property var staticLibraries: []
