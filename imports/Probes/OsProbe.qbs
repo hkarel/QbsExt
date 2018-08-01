@@ -9,11 +9,15 @@ import qbs.TextFile
 
 Probe {
     //id: osProbe
+
+    // Output
     property string osName: undefined
     property string osVersion: undefined
 
+    readonly property stringList qbsHostOS: qbs.hostOS
+    readonly property string qbsHostOSVersion: qbs.hostOSVersion
     configure: {
-        if (qbs.hostOS.containsAny(["linux", "unix"])) {
+        if (qbsHostOS.containsAny(["linux", "unix"])) {
             var confFile = "/etc/os-release"
             if (File.exists(confFile)) {
                 var file = new TextFile(confFile, TextFile.ReadOnly);
@@ -44,8 +48,8 @@ Probe {
             }
         }
         else {
-            osName = qbs.hostOS[0];
-            osVersion = qbs.hostOSVersion;
+            osName = qbsHostOS[0];
+            osVersion = qbsHostOSVersion;
         }
 
         if (osName === undefined)
