@@ -10,4 +10,6 @@ LibModule {
     id: openblas
     prefix: "/opt/openblas"
     version: "0.2.x"
+    checkingHeaders: ["cblas.h"]
+    staticLibraries: ["openblas"]
 }
