@@ -10,6 +10,10 @@ LibModule {
     id: pylon
     version: "5.0.x"
     prefix: "/opt/pylon"
-    libSuffix: "/lib64"
+    libSuffix: "/lib"
+    Properties {
+        condition: (qbs.architecture === "x86_64")
+        libSuffix: "/lib64"
+    }
     checkingHeaders: ["pylon/PylonBase.h"]
 }
