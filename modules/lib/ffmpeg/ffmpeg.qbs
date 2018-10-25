@@ -8,7 +8,7 @@ import '../LibModule.qbs' as LibModule
 
 LibModule {
     id: ffmpeg
-    version: "3.0.x"
+    version: "4.x"
     prefix: "/opt/ffmpeg"
     checkingHeaders: [
         "libavcodec/avcodec.h",
