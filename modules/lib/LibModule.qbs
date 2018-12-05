@@ -36,9 +36,13 @@ Module {
     property stringList checkingHeaders: []
 
     property var probe: {
-        return function() {
+        return function(productName) {
             if (!enabled)
                 return;
+
+            var msg;
+            var err = new Error;
+            err.productName = productName;
 
             if (useSystem
                 && checkingHeaders !== undefined
@@ -53,28 +57,36 @@ Module {
                         }
                     }
                     if (notFound === true) {
-                        var msg = "Module {0}: header file '{1}' not found in system paths. " +
-                                  "Possibly library is not installed.";
-                        throw new Error(msg.format(name, checkingHeaders[i]));
+                        msg = "Invalid dependency module '{0}'; " +
+                              "Header file {1} not found in system paths; " +
+                              "Possibly library is not installed";
+                        err.message = msg.format(name, checkingHeaders[i]);
+                        throw err;
                     }
                 }
             }
             else {
-                var msg = "Module {0}: directory '{1}' not found. " +
-                          "Possibly incorrect assigned version ({2}).";
-                if (!File.exists(includePath))
-                    throw new Error(msg.format(name, includePath, version));
+                msg = "Invalid dependency module '{0}'; Directory not found: {1}; " +
+                      "Possibly incorrect assigned library version: {2}";
+                if (!File.exists(includePath)) {
+                    err.message = msg.format(name, includePath, version);
+                    throw err;
+                }
 
-                if (!File.exists(libraryPath))
-                    throw new Error(msg.format(name, libraryPath, version));
+                if (!File.exists(libraryPath)) {
+                    err.message = msg.format(name, libraryPath, version);
+                    throw err;
+                }
 
                 if (checkingHeaders !== undefined)
                     for (var i = 0; i < checkingHeaders.length; ++i) {
                         var headerPath = includePath + "/" + checkingHeaders[i];
                         if (!File.exists(headerPath)) {
-                            msg = "Module {0}: header file '{1}' not found. " +
-                                  "Possibly library is not installed.";
-                            throw new Error(msg.format(name, headerPath));
+                            msg = "Invalid dependency module '{0}'; " +
+                                  "Header file not found: {1}; " +
+                                  "Possibly library is not installed";
+                            err.message = msg.format(name, headerPath);
+                            throw err;
                         }
                     }
             }

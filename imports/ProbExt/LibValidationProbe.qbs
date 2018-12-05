@@ -4,13 +4,12 @@
 *****************************************************************************/
 
 Probe {
-    //id: libValidation
-
     // Input
     property var checkingLibs: []
 
+    readonly property string productName: product.name
     configure: {
         for (var i in checkingLibs)
-            checkingLibs[i].probe();
+            checkingLibs[i].probe(productName);
     }
 }

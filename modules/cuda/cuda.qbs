@@ -1,3 +1,8 @@
+/*****************************************************************************
+  Модуль подключения cuda-компилятора
+
+*****************************************************************************/
+
 import qbs
 import qbs.File
 import qbs.FileInfo
@@ -18,22 +23,35 @@ Module {
     property path nvccPath:    enabled ? prefix + "/cuda-" + version + "/bin/nvcc" : undefined
 
     property var probe: {
-        return function() {
+        return function(productName) {
             if (!enabled)
                 return
-            var msg = "Module {0}: {1} '{2}' not found. Possibly incorrect assigned version ({3}).";
-            if (!File.exists(includePath))
-                throw new Error(msg.format(name, "directory", includePath, version));
 
-            if (!File.exists(libraryPath))
-                throw new Error(msg.format(name, "directory", libraryPath, version));
+            var msg = "Invalid dependency module '{0}'; {1} not found: {2}; " +
+                      "Possibly incorrect assigned library version: {3}";
+            var err = new Error;
+            err.productName = productName;
 
-            if (!File.exists(nvccPath))
-                throw new Error(msg.format(name, "file", nvccPath, version));
+            if (!File.exists(includePath)) {
+                err.message = msg.format(name, "Directory", includePath, version);
+                throw err;
+            }
 
-            if (gpuArchitecture.length === 0)
-                throw new Error(("Module {0}: undefined gpuArchitecture").format(name));
+            if (!File.exists(libraryPath)) {
+                err.message = msg.format(name, "Directory", libraryPath, version);
+                throw err;
+            }
 
+            if (!File.exists(nvccPath)) {
+                err.message = msg.format(name, "File", nvccPath, version);
+                throw err;
+            }
+
+            if (gpuArchitecture.length === 0) {
+                msg = "Invalid dependency module '{0}'; Undefined parameter: gpuArchitecture";
+                err.message = msg.format(productName. name)
+                throw err;
+            }
         };
     }
 
