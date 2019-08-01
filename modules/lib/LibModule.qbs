@@ -72,7 +72,6 @@ Module {
                     err.message = msg.format(name, includePath, version);
                     throw err;
                 }
-
                 if (!File.exists(libraryPath)) {
                     err.message = msg.format(name, libraryPath, version);
                     throw err;
