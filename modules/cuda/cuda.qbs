@@ -22,6 +22,8 @@ Module {
     property path libraryPath: enabled ? prefix + "/cuda-" + version + "/lib64" : undefined
     property path nvccPath:    enabled ? prefix + "/cuda-" + version + "/bin/nvcc" : undefined
 
+    property var dynamicLibraries: []
+
     property var probe: {
         return function(productName) {
             if (!enabled)
