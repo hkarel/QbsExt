@@ -14,13 +14,13 @@ Module {
     Depends { name: "cpp" }
 
     property bool   enabled: true
-    property string prefix: "/usr/local"
-    property string version: "8.x"
+    property string prefix: "/opt/cuda"
+    property string version: "10.x"
     property string gpuArchitecture: ""
 
-    property path includePath: enabled ? prefix + "/cuda-" + version + "/include" : undefined
-    property path libraryPath: enabled ? prefix + "/cuda-" + version + "/lib64" : undefined
-    property path nvccPath:    enabled ? prefix + "/cuda-" + version + "/bin/nvcc" : undefined
+    property path includePath: enabled ? prefix + "/" + version + "/include" : undefined
+    property path libraryPath: enabled ? prefix + "/" + version + "/lib64" : undefined
+    property path nvccPath:    enabled ? prefix + "/" + version + "/bin/nvcc" : undefined
 
     property var dynamicLibraries: []
 
