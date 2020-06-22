@@ -1,3 +1,8 @@
+/*****************************************************************************
+  Модуль генератора protobuf
+
+*****************************************************************************/
+
 import qbs
 import qbs.File
 import qbs.FileInfo
@@ -5,9 +10,11 @@ import qbs.ModUtils
 
 Module {
     id: protobuf
-    Depends { name: "cpp" }
 
-    property string generatedFilesSubDir: ""
+    // Input
+    property string generatedFilesSubDir: "protobuf.gen"
+
+    // Output
     property string generatedFilesDir: {
         return product.buildDirectory + "/" + generatedFilesSubDir;
     }
@@ -16,6 +23,10 @@ Module {
         name: "generatedFilesSubDir"
         description: "Наименование суб-директории в которой будут размещены \
                       сгенерированные файлы"
+    }
+    PropertyOptions {
+        name: "generatedFilesDir"
+        description: "Директория в которой будут размещены сгенерированные файлы"
     }
 
     validate: {
