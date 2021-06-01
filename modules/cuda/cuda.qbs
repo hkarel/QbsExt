@@ -29,8 +29,8 @@ Module {
             if (!enabled)
                 return
 
-            var msg = "Invalid dependency module '{0}'; {1} not found: {2}; " +
-                      "Possibly incorrect assigned library version: {3}";
+            var msg = "Invalid dependency module '{0}'. {1} not found: {2}" +
+                      ". Possibly incorrect assigned library version: {3}";
             var err = new Error;
             err.productName = productName;
 
@@ -50,8 +50,8 @@ Module {
             }
 
             if (gpuArchitecture.length === 0) {
-                msg = "Invalid dependency module '{0}'; Undefined parameter: gpuArchitecture";
-                err.message = msg.format(productName. name)
+                msg = "Invalid dependency module '{0}'. Undefined parameter: gpuArchitecture";
+                err.message = msg.format(name)
                 throw err;
             }
         };
