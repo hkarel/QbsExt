@@ -14,22 +14,23 @@ Module {
     property string prefix: "/opt/paddle"
     property string version: "2.1"
 
-    property pathList includePaths: {
-        return [].concat(
-            prefix + "/" + version + "/paddle/include",
-            prefix + "/" + version + "/third_party/install",
-            prefix + "/" + version + "/third_party/install/glog/include"
-        );
-    }
+    property pathList includePaths: [
+        prefix + "/" + version + "/paddle/include",
+        prefix + "/" + version + "/third_party/install",
+        prefix + "/" + version + "/third_party/install/glog/include"
+    ]
 
-    property pathList libraryPaths: {
-        return [].concat(
-            prefix + "/" + version + "/third_party/install/glog/lib",
-            prefix + "/" + version + "/third_party/install/mkldnn/lib",
-            prefix + "/" + version + "/third_party/install/mklml/lib",
-            prefix + "/" + version + "/paddle/lib"
-        );
-    }
+    property string glogLibPath:   prefix + "/" + version + "/third_party/install/glog/lib"
+    property string mkldnnLibPath: prefix + "/" + version + "/third_party/install/mkldnn/lib"
+    property string mklmlLibPath:  prefix + "/" + version + "/third_party/install/mklml/lib"
+    property string paddleLibPath: prefix + "/" + version + "/paddle/lib"
+
+    property pathList libraryPaths: [
+        glogLibPath,
+        mklmlLibPath,
+        mkldnnLibPath,
+        paddleLibPath
+    ]
 
     property var dynamicLibraries: [
         "glog",
