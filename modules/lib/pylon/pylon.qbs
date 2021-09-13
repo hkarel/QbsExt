@@ -8,12 +8,12 @@ import '../LibModule.qbs' as LibModule
 
 LibModule {
     id: pylon
-    version: "5.0.x"
+    version: "6.0.x"
     prefix: "/opt/pylon"
     libSuffix: "/lib"
-    Properties {
-        condition: (qbs.architecture === "x86_64")
-        libSuffix: "/lib64"
-    }
+    //Properties {
+    //    condition: (qbs.architecture === "x86_64")
+    //    libSuffix: "/lib64"
+    //}
     checkingHeaders: ["pylon/PylonBase.h"]
 }
