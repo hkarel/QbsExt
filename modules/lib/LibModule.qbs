@@ -33,7 +33,7 @@ Module {
         "/usr/include/x86_64-linux-gnu",
         "/usr/local/include",
     ]
-    property stringList checkingHeaders: []
+    property var checkingHeaders: []
 
     property var probe: {
         return function(productName) {
