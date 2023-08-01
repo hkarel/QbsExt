@@ -10,4 +10,7 @@ LibModule {
     id: yaml
     prefix: "/opt/yaml"
     version: "0.5.x"
+
+    dynamicLibraries: ["yaml"]
+    staticLibraries:  ["yaml"]
 }
