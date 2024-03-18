@@ -36,7 +36,8 @@ Module {
     property var checkingHeaders: []
 
     property var probe: {
-        return function(productName) {
+        return function(productName)
+        {
             if (!enabled)
                 return;
 
@@ -93,7 +94,8 @@ Module {
     }
 
     property var staticLibrariesPaths: {
-        return function(product) {
+        return function(product)
+        {
             var paths = [];
             if (enabled)
                 paths = QbsUtl.staticLibrariesPaths(product, libraryPath, staticLibraries);

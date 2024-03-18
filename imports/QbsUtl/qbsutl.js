@@ -37,7 +37,8 @@ function concatPaths()
 // Расширяет тип String функцией форматирования.
 // Источник: http://www.helpful-stuff.ru/2013/08/method-string-format-javascript.html
 // Использование: "Test formattind {0}, {1}".format(123, "string")
-String.prototype.format = function () {
+String.prototype.format = function ()
+{
     var args = arguments;
     return this.replace(/\{\{|\}\}|\{(\d+)\}/g, function (m, n) {
         if (m === "{{") { return "{"; }
