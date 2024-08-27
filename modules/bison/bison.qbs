@@ -8,8 +8,6 @@ import qbs.File
 import qbs.ModUtils
 
 Module {
-    id: bison
-
     // Input
     property string prefix: undefined
     property string generatedFilesSubDir: "bison.gen"

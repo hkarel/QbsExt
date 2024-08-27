@@ -5,7 +5,6 @@ import qbs.ModUtils
 
 
 Module {
-    id: gsoap
     condition: true
 
     Depends { name: "cpp" }

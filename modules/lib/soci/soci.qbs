@@ -7,7 +7,6 @@ import qbs
 import '../LibModule.qbs' as LibModule
 
 LibModule {
-    id: soci
     prefix: "/opt/soci"
     version: "3.2.2-x"
 }

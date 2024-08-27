@@ -7,7 +7,6 @@ import qbs
 import '../LibModule.qbs' as LibModule
 
 LibModule {
-    id: ffmpeg
     version: "4.x"
     prefix: "/opt/ffmpeg"
     checkingHeaders: [

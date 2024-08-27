@@ -7,7 +7,6 @@ import qbs
 import '../LibModule.qbs' as LibModule
 
 LibModule {
-    id: guardant
     version: "2.x"
     prefix: "/opt/guardant"
     Properties {

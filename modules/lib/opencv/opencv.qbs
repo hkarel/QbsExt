@@ -7,7 +7,6 @@ import qbs
 import '../LibModule.qbs' as LibModule
 
 LibModule {
-    id: opencv
     version: "3.0.x"
     prefix: "/opt/opencv"
     Properties {

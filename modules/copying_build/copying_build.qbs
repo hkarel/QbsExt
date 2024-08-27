@@ -10,7 +10,6 @@ import qbs.FileInfo
 import qbs.ModUtils
 
 Module {
-    id: copying_build
     additionalProductTypes: "copied_build"
 
     property path targetDirectory

@@ -7,7 +7,6 @@
 import qbs
 
 Module {
-    id: sysconf
     condition: true
 
     property pathList includePaths

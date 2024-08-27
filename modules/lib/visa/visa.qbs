@@ -8,7 +8,6 @@ import qbs
 import '../LibModule.qbs' as LibModule
 
 LibModule {
-    id: rsvisa
     version: "7.x"
     prefix: "/opt/visa"
     Properties {

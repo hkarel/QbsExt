@@ -8,8 +8,6 @@ import qbs.File
 import qbs.ModUtils
 
 Module {
-    id: flex
-
     // Input
     property string prefix: undefined
     property bool   reentrant: false

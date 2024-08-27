@@ -9,8 +9,6 @@ import qbs.FileInfo
 import qbs.ModUtils
 
 Module {
-    id: protobuf
-
     // Input
     property string generatedFilesSubDir: "protobuf.gen"
 

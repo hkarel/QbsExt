@@ -7,8 +7,6 @@ import qbs
 import qbs.File
 
 Module {
-    id: gmock
-
     property path toolchainPath: "/usr/src/gmock"
     property bool exists: {return File.exists(toolchainPath);}
 

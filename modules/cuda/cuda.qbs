@@ -10,7 +10,6 @@ import qbs.ModUtils
 import qbs.Utilities
 
 Module {
-    id: cuda
     Depends { name: "cpp" }
 
     property bool   enabled: true

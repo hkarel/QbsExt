@@ -8,7 +8,6 @@ import qbs.File
 import QbsUtl
 
 Module {
-    id: paddle
     Depends { name: "cpp" }
 
     property string prefix: "/opt/paddle"

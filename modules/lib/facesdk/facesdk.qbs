@@ -7,7 +7,6 @@ import qbs
 import '../LibModule.qbs' as LibModule
 
 LibModule {
-    id: facesdk
     prefix: "/opt/facesdk"
     version: "1.10.x"
     Properties {

@@ -11,7 +11,6 @@ import qbs.Process
 import QbsUtl
 
 Module {
-    id: project_version
     condition: true
 
     // Так можно задать версию из командной строки:

@@ -7,7 +7,6 @@ import qbs
 import '../LibModule.qbs' as LibModule
 
 LibModule {
-    id: firebird
     prefix: "/opt/firebird"
     property bool embedded: false
 

@@ -7,7 +7,6 @@ import qbs
 import '../LibModule.qbs' as LibModule
 
 LibModule {
-    id: boost
     version: "1.55.x"
     prefix: "/opt/boost"
     Properties {

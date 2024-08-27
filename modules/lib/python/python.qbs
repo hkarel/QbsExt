@@ -8,8 +8,6 @@ import qbs.File
 import QbsUtl
 
 Module {
-    id: python
-
     property string prefix: "/opt/python"
     property string version: "2.7.x"
 

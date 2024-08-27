@@ -7,7 +7,6 @@ import qbs
 import '../LibModule.qbs' as LibModule
 
 LibModule {
-    id: caffe
     prefix: "/opt/intel/mediasdk"
     version: "7.0.x" // 7.0.16073669
 }

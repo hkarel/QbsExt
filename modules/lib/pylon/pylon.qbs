@@ -7,7 +7,6 @@ import qbs
 import '../LibModule.qbs' as LibModule
 
 LibModule {
-    id: pylon
     version: "6.0.x"
     prefix: "/opt/pylon"
     libSuffix: "/lib"
