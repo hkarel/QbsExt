@@ -7,14 +7,20 @@ import qbs
 import '../LibModule.qbs' as LibModule
 
 LibModule {
-    version: "2.x"
+    version: "3.x"
     prefix: "/opt/guardant"
     Properties {
         condition: qbs.targetOS.contains("windows")
                    && qbs.toolchain && qbs.toolchain.contains("mingw")
         prefix: "c:/opt/guardant"
     }
-    checkingHeaders:  ["grdapi.h"]
-    dynamicLibraries: ["grdapi"]
-    staticLibraries:  ["grdapi"]
+    checkingHeaders: {
+        return (version[0] >= '3') ? ["grdlic.h"] : ["grdapi.h"];
+    }
+    dynamicLibraries: {
+        return (version[0] >= '3') ? ["grdlic"] : ["grdapi"];
+    }
+    staticLibraries: {
+        return (version[0] >= '3') ? ["grdlic"] : ["grdapi"];
+    }
 }
