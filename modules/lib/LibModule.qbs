@@ -38,20 +38,20 @@ Module {
     property var probe: {
         return function(productName)
         {
-            if (!enabled)
+            if (!this.enabled)
                 return;
 
             var msg;
             var err = new Error;
             err.productName = productName;
 
-            if (useSystem
-                && checkingHeaders !== undefined
-                && systemIncludePaths !== undefined) {
-                for (var i = 0; i < checkingHeaders.length; ++i) {
+            if (this.useSystem
+                && this.checkingHeaders !== undefined
+                && this.systemIncludePaths !== undefined) {
+                for (var i = 0; i < this.checkingHeaders.length; ++i) {
                     var notFound = true;
-                    for (var j = 0; j < systemIncludePaths.length; ++j) {
-                        var headerPath = systemIncludePaths[j] + "/" + checkingHeaders[i];
+                    for (var j = 0; j < this.systemIncludePaths.length; ++j) {
+                        var headerPath = this.systemIncludePaths[j] + "/" + this.checkingHeaders[i];
                         if (File.exists(headerPath)) {
                             notFound = false;
                             break;
@@ -61,7 +61,7 @@ Module {
                         msg = "Invalid dependency module '{0}'; " +
                               "Header file {1} not found in system paths; " +
                               "Possibly library is not installed";
-                        err.message = msg.format(name, checkingHeaders[i]);
+                        err.message = msg.format(this.name, this.checkingHeaders[i]);
                         throw err;
                     }
                 }
@@ -69,23 +69,23 @@ Module {
             else {
                 msg = "Invalid dependency module '{0}'; Directory not found: {1}; " +
                       "Possibly incorrect assigned library version: {2}";
-                if (!File.exists(includePath)) {
-                    err.message = msg.format(name, includePath, version);
+                if (!File.exists(this.includePath)) {
+                    err.message = msg.format(this.name, this.includePath, this.version);
                     throw err;
                 }
-                if (!File.exists(libraryPath)) {
-                    err.message = msg.format(name, libraryPath, version);
+                if (!File.exists(this.libraryPath)) {
+                    err.message = msg.format(this.name, this.libraryPath, this.version);
                     throw err;
                 }
 
-                if (checkingHeaders !== undefined)
-                    for (var i = 0; i < checkingHeaders.length; ++i) {
-                        var headerPath = includePath + "/" + checkingHeaders[i];
+                if (this.checkingHeaders !== undefined)
+                    for (var i = 0; i < this.checkingHeaders.length; ++i) {
+                        var headerPath = this.includePath + "/" + this.checkingHeaders[i];
                         if (!File.exists(headerPath)) {
                             msg = "Invalid dependency module '{0}'; " +
                                   "Header file not found: {1}; " +
                                   "Possibly library is not installed";
-                            err.message = msg.format(name, headerPath);
+                            err.message = msg.format(this.name, headerPath);
                             throw err;
                         }
                     }
@@ -97,8 +97,8 @@ Module {
         return function(product)
         {
             var paths = [];
-            if (enabled)
-                paths = QbsUtl.staticLibrariesPaths(product, libraryPath, staticLibraries);
+            if (this.enabled)
+                paths = QbsUtl.staticLibrariesPaths(product, this.libraryPath, this.staticLibraries);
             return paths;
         };
     }
